@@ -1,7 +1,7 @@
 {
-  "name": "reddit-hls-video-player",
+  "name": "reddit-video",
   "version": "1.0.0",
-  "description": "A utility to convert Reddit HLS URLs into playable video components using Video.js",
+  "description": "A utility for React to convert Reddit HLS URLs into playable video components using Video.js",
   "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
