@@ -1,19 +1,27 @@
 import videojs from "video.js";
-import "video.js/dist/video-js.css";
+import "video.js/dist/video-js.css"
 
 /**
- * Initialize a Video.js player with a Reddit HLS URL.
- * @param {string} containerId - The ID of the container element where the video player should be placed.
- * @param {string} redditUrl - The Reddit HLS URL to play.
- * @returns {Object} - Returns the Video.js player instance.
+ * Initialize a Video.js player with a Reddit HLS URL and render it inside a specified container.
+ * @param {string} HLSurl - URL of the HLS stream.
+ * @param {string} containerId - ID of the container element where the player should be rendered.
  */
-export function initializeRedditVideoPlayer(containerId, redditUrl) {
+export function RedditVideoPlayer(HLSurl, containerId) {
+    // Find the container element by its ID
     const container = document.getElementById(containerId);
 
     if (!container) {
-        throw new Error(`Element with ID '${containerId}' not found.`);
+        console.error(`Container with ID "${containerId}" not found.`);
+        return;
+    } else {
+        container.innerHTML = "";
     }
 
+    // Create a video element
+    const videoElement = document.createElement("video");
+    container.appendChild(videoElement);
+
+    // Initialize the Video.js player
     const options = {
         fill: true,
         fluid: true,
@@ -22,14 +30,13 @@ export function initializeRedditVideoPlayer(containerId, redditUrl) {
         preload: "metadata",
         sources: [
             {
-                src: redditUrl,
+                src: HLSurl,
                 type: "application/x-mpegURL",
             },
         ],
     };
 
-    const player = videojs(container, options);
+    const player = videojs(videoElement, options);
 
-    // Dispose the player when needed
-    return player;
+    // Optionally, you can add event listeners or perform other actions with the player here
 }
