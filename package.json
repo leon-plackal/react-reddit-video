@@ -1,5 +1,5 @@
 {
-  "name": "reddit-video",
+  "name": "react-reddit-video",
   "version": "1.0.0",
   "description": "A utility for React to convert Reddit HLS URLs into playable video components using Video.js",
   "main": "src/index.js",

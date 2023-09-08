@@ -1,20 +1,19 @@
 import React, { useEffect, useRef } from "react";
-import PropTypes from "prop-types";
 import videojs from "video.js";
 import "video.js/dist/video-js.css";
 
 /**
- * RedditVideo component for embedding Reddit videos.
- * @param {Object} props - Component props.
- * @param {string} props.HLSurl - The URL of the Reddit video in HLS format.
- * @param {string} [props.width="30rem"] - The width of the video container (CSS value).
- * @param {string} [props.height="30rem"] - The height of the video container (CSS value).
- * @returns {null} Returns null as this component doesn't render any visible content.
+ * RedditVideo component displays a video using the Video.js player.
+ *
+ * @param {string} HLSurl - The HLS URL of the video.
+ * @param {string} width - The width of the video container (default: "30rem").
+ * @param {string} height - The height of the video container (default: "30rem").
+ * @returns {null} - This component doesn't render any JSX elements directly.
  */
 function RedditVideo({ HLSurl, width = "30rem", height = "30rem" }) {
     // Validate HLSurl
-    if (!HLSurl) {
-        console.error("Please specify an HLSurl parameter for your RedditVideo");
+    if (typeof HLSurl !== "string" || HLSurl.trim() === "") {
+        console.error("Please specify a non-empty HLSurl parameter for your RedditVideo");
         return null;
     }
 
@@ -56,8 +55,9 @@ function RedditVideo({ HLSurl, width = "30rem", height = "30rem" }) {
 }
 
 /**
- * Initializes the Video.js player inside the given container.
- * @param {string} HLSurl - The URL of the Reddit video in HLS format.
+ * Initializes the Video.js player with the provided HLS URL and container.
+ *
+ * @param {string} HLSurl - The HLS URL of the video.
  * @param {HTMLElement} container - The container element for the video player.
  */
 function RedditVideoPlayer(HLSurl, container) {
@@ -82,11 +82,5 @@ function RedditVideoPlayer(HLSurl, container) {
 
     const player = videojs(videoElement, options);
 }
-
-RedditVideo.propTypes = {
-    HLSurl: PropTypes.string.isRequired,
-    width: PropTypes.string,
-    height: PropTypes.string,
-};
 
 export default RedditVideo;
