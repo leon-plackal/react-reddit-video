@@ -10,8 +10,8 @@ npm install react-reddit-video
 ```
 
 ## Usage
-- Please note, the it is assumed that you are using the reddit API to retrieve your posts with videos, and therefore you should be able to retrieve the 'hls_url' field from the API response.
-- Given that the reddit API does not provide any direct mp4 with audio to act as a source within a <Video/> tag for instance, this component is able to retrieve the video with audio from the hls_url, with the help of video.js
+- Please note: the it is assumed that you are using the reddit API to retrieve your posts with videos, and therefore you should be able to retrieve the 'hls_url' field from the API response.
+- Given that the reddit API does not provide any direct mp4 with audio to act as a source within a "<Video/>" tag for instance, this component is able to retrieve the video with audio from the hls_url, with the help of video.js
 
 
 import RedditVideo from "react-reddit-video";
