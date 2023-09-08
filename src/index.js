@@ -40,7 +40,7 @@ function RedditVideo({ HLSurl, width = "30rem", height = "30rem" }) {
         // Append the container to the document or a specific target element
         document.body.appendChild(container);
 
-        // Call your video player initialization function with the container element
+        // Call the video player initialization function with the container element
         RedditVideoPlayer(HLSurl, container);
 
         // Cleanup: Remove the container when the component unmounts
